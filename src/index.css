@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.flex{display: flex;}
+.item-c{align-items: center;}
+.s-b{justify-content: space-between;justify-content: space-between;}
+.header{display: block;font-size: 14px;}
+.aside, .main , .nav{display: inline-block;}
+.aside{width: 20%;}
+.main{width: 40%;}
+
+.header .leftHeader{display: contents;}
+.header .leftHeader div {margin-right: 10px;}
+.header .leftHeader span {margin-right: 5px;}
+.header .leftHeader div span:first-child{font-size: 11px;}
+.header .leftHeader div:first-child span:first-child{color: red;}
+.header .mainHeader {margin-left: 15px; color: blue;}
+.header .rightHeader{text-align: right;}
+.header .rightHeader span:last-child{display: block;font-size: 11px;}
+.header .rightHeader span:first-child{margin-right: 10px;}
+.header .rightHeader span:first-child,
+.header .rightHeader span:nth-child(2){color: orange;}
+.header .flex:nth-child(2){width: 453px;}
+
+.aside{border: 1px solid #999;border-radius: 8px;text-align: center;}
+.aside .asidePhto img{width: 91%;}
