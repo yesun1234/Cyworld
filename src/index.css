@@ -5,19 +5,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.app{width: 1200px;background: skyblue;height: 500px;padding-left: 60px;padding-top: 30px;z-index: -1000;position: relative;}
+.app .outline::after{border: 1px solid #fff;content: "";position: absolute;width: 18.8%;height: 89%;left: 18px;top: 8px;border-right: none;border-radius: 8px;}
+.app .outline::before{border: 1px solid #fff;content: "";position: absolute;width: 47.8%;height: 89%;left: 257px;top: 8px;border-left: none;border-radius: 8px;}
+.app .inline::after{border: 1px dashed #fff;content: "";position: absolute;width: 17.3%;height: 85.5%;left: 38px;top: 18px;border-right: none;border-radius: 8px;}
+.app .inline::before{border: 1px dashed #fff;content: "";position: absolute;width: 45.8%;height: 85.5%;left: 257px;top: 18px;border-left: none;border-radius: 8px;}
+.bgs{position: relative;}
+.bgs::before{width: 18%; height: 434px; background: #ededed;position: absolute;content: "";top: 0;left: -11px;z-index: -99;}
 .flex{display: flex;}
 .item-c{align-items: center;}
 .s-b{justify-content: space-between;justify-content: space-between;}
-.header{display: block;font-size: 14px;}
+.header{display: block;font-size: 14px;height: 44px;background: #ededed;width: 55%;border-top-left-radius: 8px;border-top-right-radius: 8px;}
 .aside, .main , .nav{display: inline-block;}
-.aside{width: 20%;}
-.main{width: 40%;}
+.aside{width: 13%;background: #fff;}
+.main{width: 40%;background: #fff;}
 
 .header .leftHeader{display: contents;}
 .header .leftHeader div {margin-right: 10px;}
@@ -32,5 +40,11 @@ code {
 .header .rightHeader span:nth-child(2){color: orange;}
 .header .flex:nth-child(2){width: 453px;}
 
-.aside{border: 1px solid #999;border-radius: 8px;text-align: center;}
-.aside .asidePhto img{width: 91%;}
+.aside{border: 1px solid #999;border-radius: 8px;text-align: center; padding: 10px 20px;padding-top: 0;position: relative;z-index: 1000;}
+.aside .asideTop{margin-top: 15px;margin-bottom: 5px;}
+.aside .asideTop, .asidePhto{border: 1px solid #999;border-radius: 3px;}
+.aside .asidePhto{height: 128px;position: relative;margin-bottom: 40px;}
+.aside .asidePhto img{width: 86%; position: absolute;top: -43px;left: 8px;}
+.aside .asideBottom{margin-top: 70px;border-bottom: 1px solid #999;margin-bottom: 8px;}
+.aside .asideLast div{display: flex;}
+

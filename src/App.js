@@ -6,7 +6,10 @@ import Nav from './component/Nav'
 
 const App = () => {
   return (
-    <div>
+    <div className='app'>
+      <div className='outline'></div>
+      <div className='inline'></div>
+      <div className='bgs'></div>
       <Header />
       <Aside />
       <Main />
