@@ -50,7 +50,7 @@ code {
 .aside .asideBottom{margin-top: 70px;border-bottom: 1px solid #999;margin-bottom: 8px;}
 .aside .asideLast div{display: flex;}
 
-.nav a{color: #000;text-decoration: none;pointer-events: all;display: inline-block;cursor: pointer;}
+.nav a{color: #fff;text-decoration: none;pointer-events: all;display: inline-block;cursor: pointer;}
 .nav ul{list-style-type: none;padding: 0;}
 .nav ul li{text-align: center;border-left: none !important; border: 1px solid #666;border-top-left-radius: 0 !important; border-bottom-left-radius:0 !important;border-radius: 4px;padding: 3px 7px;background: rgb(88, 120, 207);}
 

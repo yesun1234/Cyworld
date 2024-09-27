@@ -1,0 +1,9 @@
+{
+    "nav": [
+        {"id": "home", "nav" : "홈"},
+        {"id": "profile", "nav" : "프로필"},
+        {"id": "board", "nav" : "게시판"},
+        {"id": "guest", "nav" : "방명록"},
+        {"id": "photo", "nav" : "사진첩"}
+    ]
+}

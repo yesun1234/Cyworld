@@ -1,21 +1,37 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import UseFetch from '../fetch/UseFetch';
 
 const Nav = () => {
-  const [click, setClick] = useState(0);
-  const thisClick = (index) => {
-    setClick(index);
-  }
+  const [selectedIndex, setSelectedIndex] = useState(0); // Start with the first item selected
+  const click = UseFetch('http://localhost:3001/nav');
+
+  // Handle item click to update selected index
+  const handleClick = (index) => {
+    setSelectedIndex(index);
+  };
+
   return (
     <div className='nav'>
       <ul>
-        {['home', 'profile', 'board', 'guest','photo'].map((item, index) => (
-          <li key={index} onClick={() => thisClick(index)} style={{backgroundColor: click === index ? '#ededed' : 'rgb(88, 120, 207)'}}>
-            <Link to={`/${item}`}>
-              {item === 'home' ? '홈' : item.charAt(0).toUpperCase() + item.slice(1)}
-            </Link>
+        {click.map((nav, index) => {
+          const isSelected = index === selectedIndex;
+          return (
+            <li
+              key={nav.id}
+              onClick={() => handleClick(index)}
+              style={{
+                backgroundColor: isSelected ? '#fff' : 'rgb(88, 120, 207)',
+                color: isSelected ? '#666' : '#fff'
+              }}>
+              <Link 
+                to={`/${nav.id}`} 
+                style={{ color: isSelected ? '#666' : '#fff' }}>
+                {nav.nav}
+              </Link>
             </li>
-        ))}
+          );
+        })}
       </ul>
     </div>
   );
