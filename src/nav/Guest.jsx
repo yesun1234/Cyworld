@@ -1,11 +1,22 @@
-import React from 'react'
+import React from 'react';
+import UseFetch from '../fetch/UseFetch';
+import GuestTop from './GuestTop';
 
 const Guest = () => {
+  const content = UseFetch('http://localhost:3001/guest');
+
   return (
     <div>
-      방명록
+      <GuestTop />
+      <ul>
+        {content.map((guest, index) => (
+          <li key={guest.id}>
+            {guest.content}
+          </li>
+        ))}
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Guest
+export default Guest;

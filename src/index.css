@@ -56,5 +56,14 @@ code {
 
 .nav ul li + li{margin-top: 10px;}
 
+.guesttop{display: block; background: #f2f2f2;width: 91%;height: 131px;margin: 10px auto;border-top: 1px solid #999;border-bottom: 1px solid #999;padding: 13px 11px;position: relative;}
+.guesttop .profile{position: relative;width: 105px;height: 105px;}
+.guesttop .write{width: 279px;}
+.guesttop .write textarea{width: 99%; height: 94%;border: none;outline: none;}
+.guesttop .profile img{position: absolute;top: -34px;left: 1px;}
+.guesttop .profile, .write{display: inline-block;vertical-align: top;background: #fff;height: 81%;margin: 4px;border: 1px solid #999;}
+.guesttop img{width: 100px;}
+.guesttop button{display: block;right: 12px;position: absolute;}
 
-.content{width: 37%;border: 1px solid #999;margin-left: 8px;border-radius: 8px;}
+
+.content{width: 37%;border: 1px solid #999;margin-left: 8px;border-radius: 8px;background: #fff;}
