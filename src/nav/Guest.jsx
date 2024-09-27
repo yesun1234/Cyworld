@@ -1,20 +1,14 @@
 import React from 'react';
-import UseFetch from '../fetch/UseFetch';
 import GuestTop from './GuestTop';
+import GuestBottom from './GuestBottom';
 
 const Guest = () => {
-  const content = UseFetch('http://localhost:3001/guest');
-
   return (
-    <div>
+    <div className='guest'>
       <GuestTop />
-      <ul>
-        {content.map((guest, index) => (
-          <li key={guest.id}>
-            {guest.content}
-          </li>
-        ))}
-      </ul>
+      <div className='scroll-content'>
+        <GuestBottom />
+      </div>
     </div>
   );
 };

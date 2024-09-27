@@ -65,5 +65,12 @@ code {
 .guesttop img{width: 100px;}
 .guesttop button{display: block;right: 12px;position: absolute;}
 
-
+.guestbottom{display: block; background: #f2f2f2;width: 91%;height: 131px;margin: 10px auto;border-top: 1px solid #999;border-bottom: 1px solid #999;padding: 13px 11px;position: relative;}
+.guestbottom .profile{position: relative;width: 105px;height: 105px;}
+.guestbottom .write{width: 279px;}
+.guestbottom .profile img{position: absolute;top: -34px;left: 1px;}
+.guestbottom .profile, .write{display: inline-block;vertical-align: top;background: #fff;height: 81%;margin: 4px;border: 1px solid #999;}
+.guestbottom img{width: 100px;}
+.guestbottom button{display: block;right: 12px;position: absolute;}
+.guest-item{height: 138px;}
 .content{width: 37%;border: 1px solid #999;margin-left: 8px;border-radius: 8px;background: #fff;}
