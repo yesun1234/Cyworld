@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './component/Header';
 import Aside from './component/Aside';
 import Home from './nav/Home';
@@ -10,6 +10,20 @@ import Nav from './component/Nav';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const App = () => {
+  useEffect(() => {
+    const app = document.querySelector('.content');
+  
+    const handleScroll = () => {
+      console.log('Scrolled!', app.scrollTop);
+    };
+  
+    app.addEventListener('scroll', handleScroll);
+  
+    return () => {
+      app.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
   return (
     <Router>
       <div className='app'>
