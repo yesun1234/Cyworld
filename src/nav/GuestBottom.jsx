@@ -2,15 +2,19 @@ import React from 'react';
 import UseFetch from '../fetch/UseFetch';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons'; // 사용할 아이콘
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
-const GuestBottom = () => {
+const GuestBottom = ({ currentPage, itemsPerPage }) => {
   const content = UseFetch('http://localhost:3001/guest');
- 
+
+  const indexOfLastGuest = currentPage * itemsPerPage;
+  const indexOfFirstGuest = indexOfLastGuest - itemsPerPage;
+  const currentGuests = content.slice(indexOfFirstGuest, indexOfLastGuest);
+
   return (
     <>
-      {content.map((guest, index) => (
-        <div className='guestbottom' key={`${guest.id}-${index}`}> {/* 고유한 key 생성 */}
+      {currentGuests.map((guest, index) => (
+        <div className='guestbottom' key={`${guest.id}-${index}`}>
           <div className='guest-item'>
             <div className='profiletop'>
               <span>no.{guest.no}</span>
@@ -40,4 +44,3 @@ const GuestBottom = () => {
 };
 
 export default GuestBottom;
-

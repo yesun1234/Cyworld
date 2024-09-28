@@ -85,3 +85,11 @@ code {
 .profilebottom{height: 100%;padding-left: 11px;}
 
 form{display: inline;}
+.page{margin: 0 auto; text-align: center;position: relative;}
+.page span:first-child, .page span:last-child{position: relative;top: 2px;}
+.page span + span{ margin-left: 10px;}
+.page .pagination{padding: 0;display: flex;justify-content: center;}
+
+.pagination {margin: 0;list-style: none;}
+.pagination li + li{margin-left: 10px;}
+.pagination a{text-decoration: none; color: #000;}
