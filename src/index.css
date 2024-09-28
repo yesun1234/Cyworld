@@ -83,3 +83,5 @@ code {
 .profiletop span:nth-child(2){margin-right: -7px;}
 
 .profilebottom{height: 100%;padding-left: 11px;}
+
+form{display: inline;}

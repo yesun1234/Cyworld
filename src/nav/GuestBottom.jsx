@@ -6,7 +6,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'; // 사용할 아이�
 
 const GuestBottom = () => {
   const content = UseFetch('http://localhost:3001/guest');
-  
+ 
   return (
     <>
       {content.map((guest, index) => (
