@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import UseFetch from '../fetch/UseFetch';
 
-const Nav = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0); // Start with the first item selected
+const Nav = ({ setShowPhotoAlbum }) => { 
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const click = UseFetch('http://localhost:3001/nav');
 
-  // Handle item click to update selected index
-  const handleClick = (index) => {
+  const handleClick = (index, navId) => {
     setSelectedIndex(index);
+    if (navId === 'photo') {
+      setShowPhotoAlbum(true);
+    } else {
+      setShowPhotoAlbum(false); 
+    }
   };
 
   return (
@@ -19,7 +23,7 @@ const Nav = () => {
           return (
             <li
               key={nav.id}
-              onClick={() => handleClick(index)}
+              onClick={() => handleClick(index, nav.id)} 
               style={{
                 backgroundColor: isSelected ? '#fff' : 'rgb(88, 120, 207)',
                 color: isSelected ? '#666' : '#fff'

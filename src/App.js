@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './component/Header';
 import Aside from './component/Aside';
 import Home from './nav/Home';
@@ -10,6 +10,8 @@ import Nav from './component/Nav';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const App = () => {
+  const [showPhotoAlbum, setShowPhotoAlbum] = useState(false); // State for controlling photo album visibility
+
   useEffect(() => {
     const app = document.querySelector('.content');
   
@@ -32,7 +34,7 @@ const App = () => {
         <div className='bgs'></div>
         <Header />
         <div className='flex'>
-          <Aside />
+          <Aside showPhotoAlbum={showPhotoAlbum} /> {/* Pass showPhotoAlbum state */}
           <div className='content'>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -43,7 +45,7 @@ const App = () => {
               <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>
-          <Nav />
+          <Nav setShowPhotoAlbum={setShowPhotoAlbum} /> {/* Pass setShowPhotoAlbum function */}
         </div>
       </div>
     </Router>
