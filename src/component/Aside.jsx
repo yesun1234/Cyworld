@@ -10,25 +10,25 @@ const Aside = ({ showPhotoAlbum }) => {
   const [showInputFields, setShowInputFields] = useState(false); // 입력 필드 표시 상태
 
   const handleAddPhotoList = () => {
+    const newId = photolists.length ? photolists[photolists.length - 1].id + 1 : 1; // 새로운 ID 생성
     fetch('http://localhost:3001/photoList', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        id: idRef.current.value,
-        nav: navRef.current.value
+        id: newId, // 새로운 ID 사용
+        nav: navRef.current.value // nav는 입력 필드에서 가져옴
       })
     }).then(res => {
       if (res.ok) {
         alert("사진이 추가되었습니다.");
-        // 추가 후 필요한 작업 (예: 상태 업데이트 등)
-        idRef.current.value = ''; // 입력 필드 초기화
+        idRef.current.value = '';
         navRef.current.value = '';
       } else {
         alert("추가 실패: " + res.status + " " + res.statusText);
       }
     }).catch(err => {
       console.error("추가 오류:", err);
-      alert("추가 중 오류가 발생했습니다.");
+
     });
   };
 
@@ -78,13 +78,14 @@ const Aside = ({ showPhotoAlbum }) => {
               {showInputFields && (
                 <div>
                   <input type="text" ref={navRef} placeholder="사진 이름" />
-                  <input type="text" ref={idRef} placeholder="ID" />
                   <button onClick={handleAddPhotoList}>추가</button>
                 </div>
               )}
             </>
           ) : (
-            <button onClick={() => setIsEditing(true)}>수정</button>
+            <div className='phtoasidebutton'>
+              <button onClick={() => setIsEditing(true)}>수정</button>
+            </div>
           )}
         </div>
       )}
