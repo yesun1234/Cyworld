@@ -10,13 +10,14 @@ const Guest = () => {
   const itemsPerPage = 5; // 한 페이지에 표시할 아이템 수
 
   useEffect(() => {
-    const fetchTotalItems = async () => {
+    const fetchGuests = async () => {
       const response = await fetch('http://localhost:3001/guest');
       const data = await response.json();
-      setGuests(data); // 전체 guests 상태 업데이트
-      setTotalItemsCount(data.length); // 총 아이템 수를 설정
+      const sortedGuests = data.sort((a, b) => new Date(b.date) - new Date(a.date)); // 최신순으로 정렬
+      setGuests(sortedGuests); // 전체 guests 상태 업데이트
+      setTotalItemsCount(sortedGuests.length); // 총 아이템 수를 설정
     };
-    fetchTotalItems();
+    fetchGuests();
   }, []);
 
   const handleNewGuest = (newGuest) => {
@@ -37,10 +38,7 @@ const Guest = () => {
     <div className='guest'>
       <GuestTop onNewGuest={handleNewGuest} />
       <div className='scroll-content'>
-        <GuestBottom 
-          currentGuests={currentGuests} 
-          setGuests={setGuests} // setGuests를 전달
-        />
+        <GuestBottom currentGuests={currentGuests} setGuests={setGuests} />
       </div>
       <div className='page'>
         <Pagination

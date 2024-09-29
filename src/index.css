@@ -93,6 +93,6 @@ form{display: inline;}
 .pagination {margin: 0;list-style: none;}
 .pagination li + li{margin-left: 10px;}
 .pagination a{text-decoration: none; color: #000;}
-.profiletop button{border: none; position: relative; display: inline; padding: 0;color: #666;}
-.profiletop .del{margin-left: 36px;}
+.profiletop button{border: none; position: relative; display: inline; padding: 0;color: #666;cursor: pointer;}
+.profiletop .del{margin-left: 97px;}
 .profiletop .change{margin-left: 6px !important;}
