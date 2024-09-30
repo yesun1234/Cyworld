@@ -52,7 +52,7 @@ code {
 
 .nav a{color: #fff;text-decoration: none;pointer-events: all;display: inline-block;cursor: pointer;}
 .nav ul{list-style-type: none;padding: 0;}
-.nav ul li{text-align: center;border-left: none !important; border: 1px solid #666;border-top-left-radius: 0 !important; border-bottom-left-radius:0 !important;border-radius: 4px;padding: 3px 7px;background: rgb(88, 120, 207);}
+.nav ul li{text-align: center;border-left: none !important; border: 1px solid #666;border-top-left-radius: 0 !important; border-bottom-left-radius:0 !important;border-radius: 4px;padding: 6px 3px;background-color: rgb(56 142 176);}
 
 .nav ul li + li{margin-top: 10px;}
 
@@ -99,7 +99,12 @@ form{display: inline;}
 
 .photoside{height: 348px;position: relative;}
 .photoside ul{padding: 0; list-style-type: none;}
-.photoside li{text-align: left;}
+.photoside li{text-align: left;position: relative;}
 .photoside a{text-decoration: none;color: #333;}
 .photoside .phtoasidebutton{position: absolute;bottom: 0px;right: 0;}
-.photoside button{border: none;background: #fff;}
+.photoside button{border: none;background: #fff;cursor: pointer;}
+
+.photolistdelbutton{position: absolute !important;right: 0;}
+.editbutton{position: absolute;top: 14px;right: -2px;}
+.asideEdit input{border: none;position: absolute;}
+.asideEdit button{position: relative;right: -64px;top: -14px;}
