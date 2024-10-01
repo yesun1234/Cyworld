@@ -1,43 +1,67 @@
-import React from 'react'
+import React from 'react';
+import UseFetch from '../fetch/UseFetch';
+import PhotoWrite from './PhotoWrite';
+import { Link } from 'react-router-dom';
 
 const Photo = () => {
+  const photo = UseFetch('http://localhost:3001/photo');
+
   return (
     <div className='photo'>
       <div className='photowrite'>
-        <button>글쓰기</button>
+        <Link to='/photo/photoWrite'>
+        <button>글쓰기</button></Link>
       </div>
+      {photo.map((photo) => (
+        <div key={photo.id}>
+          <h3 className='phtoTop'>{photo.title}</h3>
+          <div className='photoMiddle'>
+            <div>안예선</div>
+            <div>2024.10.01</div>
+          </div>
+          <div className='photoPhoto'>
+            <img src={photo.image} alt='사진' /> {/* image 필드 사용 */}
+          </div>
 
-      <h3 className='phtoTop'>행복한 하루</h3>
+          <div className='photophotowirte'>{photo.content}</div> {/* content 필드 사용 */}
 
-      <div className='photoMiddle'>
-        <div>안예선</div>
-        <div>2024.10.01</div>
-      </div>
+          <div className='photobottom'>
+            <button>수정</button>
+            <button>삭제</button>
+          </div>
 
-      <div className='photoPhoto'>
-          <img src='/image/IMG_4420.PNG' alt='거울샷' />
-      </div>
+          <div className='photoPeople'>
+            <span>댓글</span>
+            <span>
+              <input />
+            </span>
+            <span>
+              <button>확인</button>
+            </span>
+          </div>
 
-      <div className='photophotowirte'>행복한 하루야~~</div>
-
-      <div className='photobottom'>
-        <button>수정</button>
-        <button>삭제</button>
-      </div>
-      <div className='photoPeople'>
-        <span>댓글</span>
-        <span><input></input></span>
-        <span><button>확인</button></span>
-      </div>
-      <div className='photopeoplewrite'>
-        <ul>
-          <li><span>안예선: 예뻐요</span> <span><button>수정</button><button>삭제</button></span></li>
-          <li><span>김해원: 예뻐다 기지배</span> <span><button>수정</button><button>삭제</button></span></li>
-          <li><span>전혜지: 놀러가자</span> <span><button>수정</button><button>삭제</button></span></li>
-        </ul>
-      </div>
+          <div className='photopeoplewrite'>
+            <ul>
+              {/* coment 배열을 map으로 순회 */}
+              {photo.coment.map((comment, index) => (
+                <li key={index}>
+                  {Object.keys(comment).map((author) => (
+                    <span key={author}>
+                      {author}: {comment[author]}
+                    </span>
+                  ))}
+                  <span>
+                    <button>수정</button>
+                    <button>삭제</button>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Photo
+export default Photo;

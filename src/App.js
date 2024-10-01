@@ -8,6 +8,7 @@ import Photo from './nav/Photo';
 import Profile from './nav/Profile';
 import Nav from './component/Nav';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import PhotoWrite from './nav/PhotoWrite';
 
 const App = () => {
   const [showPhotoAlbum, setShowPhotoAlbum] = useState(false); // State for controlling photo album visibility
@@ -43,6 +44,7 @@ const App = () => {
               <Route path="/guest" element={<Guest />} />
               <Route path="/photo" element={<Photo />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path='/photo/photoWrite' element={<PhotoWrite />} />
             </Routes>
           </div>
           <Nav setShowPhotoAlbum={setShowPhotoAlbum} /> {/* Pass setShowPhotoAlbum function */}
