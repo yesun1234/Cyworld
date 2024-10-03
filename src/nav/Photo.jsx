@@ -1,6 +1,5 @@
 import React from 'react';
 import UseFetch from '../fetch/UseFetch';
-import PhotoWrite from './PhotoWrite';
 import { Link } from 'react-router-dom';
 
 const Photo = () => {
@@ -10,20 +9,24 @@ const Photo = () => {
     <div className='photo'>
       <div className='photowrite'>
         <Link to='/photo/photoWrite'>
-        <button>글쓰기</button></Link>
+          <button>글쓰기</button>
+        </Link>
       </div>
-      {photo.map((photo) => (
-        <div key={photo.id}>
-          <h3 className='phtoTop'>{photo.title}</h3>
+      {photo.map((photoItem) => (
+        <div key={photoItem.id}>
+          <h3 className='photoTop'>{photoItem.title}</h3>
           <div className='photoMiddle'>
             <div>안예선</div>
-            <div>2024.10.01</div>
+            <div>{photoItem.date}</div>
           </div>
           <div className='photoPhoto'>
-            <img src={photo.image} alt='사진' /> {/* image 필드 사용 */}
+            <img src={photoItem.image} alt='사진' />
           </div>
 
-          <div className='photophotowirte'>{photo.content}</div> {/* content 필드 사용 */}
+          <div className='photophotowirte'>
+            {console.log('Content:', photoItem.content)} {/* 로그 확인 */}
+            <div dangerouslySetInnerHTML={{ __html: photoItem.content }} /> {/* HTML을 안전하게 출력 */}
+          </div>
 
           <div className='photobottom'>
             <button>수정</button>
@@ -42,8 +45,7 @@ const Photo = () => {
 
           <div className='photopeoplewrite'>
             <ul>
-              {/* coment 배열을 map으로 순회 */}
-              {photo.coment.map((comment, index) => (
+              {photoItem.coment && photoItem.coment.map((comment, index) => (
                 <li key={index}>
                   {Object.keys(comment).map((author) => (
                     <span key={author}>

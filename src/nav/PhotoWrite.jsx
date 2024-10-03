@@ -1,25 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import UseFetch from '../fetch/UseFetch';
 
 const PhotoWrite = () => {
-  const photoNav = UseFetch('http://localhost:3001/photoList');
+  const photoNav = UseFetch('http://localhost:3001/photoList') || [];
 
   const [content, setContent] = useState('');
+  const [nextNo, setNextNo] = useState(0);
+  const [selectedNav, setSelectedNav] = useState(photoNav[0]?.nav || ''); // 기본값 설정
+  const [title, setTitle] = useState('');
+
+  useEffect(() => {
+    writeNo();
+  }, []);
+
+  const writeNo = async () => {
+    const response = await fetch(`http://localhost:3001/photo`);
+    const data = await response.json();
+    if (data.length > 0) {
+      const maxNo = Math.max(...data.map(photo => parseInt(photo.id, 10)));
+      setNextNo(maxNo + 1);
+    } else {
+      setNextNo(0);
+    }
+  }
 
   const handleChange = (value) => {
     setContent(value);
   };
 
+  const handleNavChange = (e) => {
+    setSelectedNav(e.target.value);
+  };
+
   const onEditorSaveHandler = () => {
-    // 작성된 텍스트 내용을 갖고옴
     console.log(content);
   };
+
   const modules = {
     toolbar: [
-      [{ 'header': '1'}, { 'font': [] }],
-      [{size: []}],
+      [{ 'header': '1' }, { 'font': [] }],
+      [{ size: [] }],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
       [{'list': 'ordered'}, {'list': 'bullet'}],
       ['link', 'image'], // 이미지 버튼 추가
@@ -27,19 +49,42 @@ const PhotoWrite = () => {
     ]
   };
 
+  const write = async () => {
+    const response = await fetch(`http://localhost:3001/photo`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id: nextNo,
+        nav: selectedNav,
+        title: title,
+        content: content,
+        date: new Date().toISOString()
+      })
+    });
+    if (response.ok) {
+      // 추가된 후 필요한 처리
+      console.log('저장 완료');
+    } else {
+      console.error('저장 실패');
+    }
+  }
+
   return (
     <div className='photoWrite'>
       <div className='photowritetop'>
-        <span><h3>title</h3></span>
-        <span><input type="text" /></span>
+        <span><h3>제목</h3></span>
         <span>
-          <select name="" id="">
-            {photoNav.map((nav)=>(
-              <option value="">{nav.nav}</option>
+          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        </span>
+        <span>
+          <select value={selectedNav} onChange={handleNavChange}>
+            {photoNav.map((nav) => (
+              <option key={nav.id} value={nav.nav}>{nav.nav}</option>
             ))}
           </select>
         </span>
-        
       </div>
       <div style={{ width: "100%" }}>
         <ReactQuill
@@ -49,8 +94,8 @@ const PhotoWrite = () => {
           placeholder="아무말이나 작성해주세요!"
         />
       </div>
-      <div>
-        <button onClick={onEditorSaveHandler}>저장!</button>
+      <div className='writebtn'>
+        <button onClick={write}>저장!</button>
       </div>
     </div>
   );
