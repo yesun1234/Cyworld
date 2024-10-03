@@ -132,4 +132,12 @@ form{display: inline;}
 .photopeoplewrite ul li button{border: none;background: #f6f6f6;}
 .photopeoplewrite ul li + li{margin-top: 3px;}
 
+.photoWrite{padding: 10px;}
+.photowritetop{display: flex; align-items: center;}
+.photowritetop span + span{margin-left: 10px;}
+.photowritetop span input{width: 271px;}
+.photowritetop span h4{padding: 0;margin: 0;}
+.photowritetop span select {width: 94px;}
+
+
 
