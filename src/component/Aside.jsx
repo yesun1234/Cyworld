@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import UseFetch from '../fetch/UseFetch';
+import kakaoTalkPhoto from '../image/KakaoTalk_Photo_2024-09-19-18-17-35.png'
 
 const Aside = ({ showPhotoAlbum }) => {
     const photolists = UseFetch('http://localhost:3001/photoList');
@@ -120,7 +121,8 @@ const Aside = ({ showPhotoAlbum }) => {
                     </div>
 
                     <div className='asidePhto'>
-                        <img src="/image/KakaoTalk_Photo_2024-09-19-18-17-35.png" alt="사이월드 로고" />
+                    <img src={kakaoTalkPhoto} alt="카카오톡 사진" />
+
                     </div>
 
                     <div className='asideMain'>사이좋은 사람들 싸이월드 ^~^</div>

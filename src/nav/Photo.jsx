@@ -20,7 +20,7 @@ const Photo = () => {
             <div>{photoItem.date}</div>
           </div>
           <div className='photoPhoto'>
-            <img src={photoItem.image} alt='사진' />
+          <img src={photoItem.image} alt="사진" />
           </div>
 
           <div className='photophotowirte'>

@@ -48,7 +48,7 @@ const GuestTop = ({ onNewGuest }) => {
     <div className='guesttop'>
       <form onSubmit={write}>
         <div className='profile'>
-          <img src="/image/KakaoTalk_Photo_2024-09-19-18-17-35.png" alt="사이월드 로고" />
+        <img src='/Cyworld/static/media/KakaoTalk_Photo_2024-09-19-18-17-35.fccafeb60e41252e995a.png' alt="사이월드 로고" />
         </div>
         <div className='write'>
           <textarea ref={contentRef} placeholder="글을 작성하세요..."></textarea>
