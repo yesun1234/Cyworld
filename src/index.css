@@ -110,10 +110,6 @@ form{display: inline;}
 .asideEdit button{position: absolute;right: 1px;top: 0px;}
 
 .photoMiddle{display: flex;align-items: center;justify-content: space-between;margin: 3px 0px;}
-.photoPhoto {width: 100%;}
-.photoPhoto img{width: 100%;}
-
-.photophotowirte{margin: 23px 0px;}
 
 .photobottom{display: flex;justify-content: end; margin: 4px 0; border-top: 1px dashed #ededed; padding: 3px 0;}
 .photobottom button{border: none;color: orange;background: #fff;position: relative;}
@@ -122,11 +118,13 @@ form{display: inline;}
 .photowrite{display: flex; justify-content: flex-end;}
 .phtoTop{margin: 0 auto; padding: 5px; text-align: center;background: #f6f6f6;margin-top: 10px;border-top: 1px solid #d7d5d5;border-bottom: 1px dashed #d7d5d5;}
 
+.photophotowirte > div p img{width: 100%;}
+
 .photo{padding: 10px 6px 10px 10px;}
 .photoPeople{background: #f6f6f6;padding: 6px 4px;}
 .photoPeople input{width: 77%;}
 .photoPeople span + span{margin-left: 10px;}
-.photopeoplewrite {background: #f6f6f6;padding: 1px 4px;margin-top: 6px;}
+.photopeoplewrite {margin-top: 6px;}
 .photopeoplewrite ul{padding: 0;}
 .photopeoplewrite ul li{list-style-type: none; position: relative;display: flex;align-items: center;justify-content: space-between;}
 .photopeoplewrite ul li button{border: none;background: #f6f6f6;}
@@ -202,7 +200,8 @@ form{display: inline;}
 
 .photopeoplewrite ul {
   list-style-type: none;
-  padding: 0;
+  background: #f6f6f6;
+  padding: 1px 4px;
 }
 
 .photopeoplewrite li {

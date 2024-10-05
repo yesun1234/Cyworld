@@ -28,7 +28,7 @@ const App = () => {
   }, []);
   
   return (
-    <Router>
+    <Router basename="/Cyworld">
       <div className='app'>
         <div className='outline'></div>
         <div className='inline'></div>
@@ -44,7 +44,7 @@ const App = () => {
               <Route path="/guest" element={<Guest />} />
               <Route path="/photo" element={<Photo />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path='/photo/photoWrite' element={<PhotoWrite />} />
+              <Route path="/photo/photoWrite" element={<PhotoWrite />} />
             </Routes>
           </div>
           <Nav setShowPhotoAlbum={setShowPhotoAlbum} /> {/* Pass setShowPhotoAlbum function */}

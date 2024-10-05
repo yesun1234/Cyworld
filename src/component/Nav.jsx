@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import UseFetch from '../fetch/UseFetch';
+import dummy from '../db/Data.json'; // Data.json 파일 불러오기
 
 const Nav = ({ setShowPhotoAlbum }) => { 
-  const [selectedIndex, setSelectedIndex] = useState(null); // 초기값을 null로 설정
-  const click = UseFetch('http://localhost:3001/nav');
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const click = dummy.nav; // Data.json의 nav 배열 사용
 
   useEffect(() => {
-    // 페이지 새로고침 시 localStorage에서 저장된 index를 가져옴
     const savedIndex = localStorage.getItem('selectedIndex');
     if (savedIndex !== null) {
       setSelectedIndex(parseInt(savedIndex, 10));
@@ -22,7 +21,7 @@ const Nav = ({ setShowPhotoAlbum }) => {
 
   const handleClick = (index, navId) => {
     setSelectedIndex(index);
-    localStorage.setItem('selectedIndex', index); // 클릭 시 index를 localStorage에 저장
+    localStorage.setItem('selectedIndex', index);
     if (navId === 'photo') {
       setShowPhotoAlbum(true);
     } else {

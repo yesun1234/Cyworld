@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import UseFetch from '../fetch/UseFetch';
+import { useNavigate } from 'react-router-dom';
 
 const PhotoWrite = () => {
   const photoNav = UseFetch('http://localhost:3001/photoList') || [];
@@ -10,6 +11,7 @@ const PhotoWrite = () => {
   const [nextNo, setNextNo] = useState(0);
   const [selectedNav, setSelectedNav] = useState(photoNav[0]?.nav || ''); // 기본값 설정
   const [title, setTitle] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     writeNo();
@@ -64,7 +66,7 @@ const PhotoWrite = () => {
       })
     });
     if (response.ok) {
-      // 추가된 후 필요한 처리
+      navigate('/photo')
       console.log('저장 완료');
     } else {
       console.error('저장 실패');
