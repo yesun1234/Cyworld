@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import dummy from '../db/Data.json'; // 더미 데이터를 가져옵니다.
+import dummy from '../db/Data.json';
 import Pagination from 'react-js-pagination';
+import PhotoComent from './PhotoComent';
 
 const Photo = () => {
-  // const photo = UseFetch('http://localhost:3001/photo'); // 실제 API를 사용하려면 주석을 해제하세요.
-  const photos = dummy.photo; // dummy 데이터를 사용
+  const photos = dummy.photo;
 
   // 날짜를 'YYYY.MM.DD HH:mm' 형식으로 변환하는 함수
   const formatDate = (dateString) => {
@@ -21,20 +21,14 @@ const Photo = () => {
   /* page */
   const [page, setPage] = useState(1);
   const [totalItemsCount, setTotalItemsCount] = useState(0);
-  const [guests, setGuests] = useState([]); // guests를 저장할 상태
+  const [guests, setGuests] = useState([]); 
   const itemsPerPage = 5;
 
   useEffect(() => {
-    // 더미 데이터를 정렬하여 guests 상태를 업데이트합니다.
     const sortedGuests = photos.sort((a, b) => new Date(b.date) - new Date(a.date));
-    setGuests(sortedGuests); // 전체 guests 상태 업데이트
-    setTotalItemsCount(sortedGuests.length); // 총 아이템 수를 설정
+    setGuests(sortedGuests);
+    setTotalItemsCount(sortedGuests.length);
   }, [photos]);
-
-  const handleNewGuest = (newGuest) => {
-    setGuests(prevGuests => [newGuest, ...prevGuests]); // 새로운 손님을 추가합니다.
-    setTotalItemsCount(prevCount => prevCount + 1); // 총 아이템 수를 증가시킵니다.
-  };
 
   const handlePageChange = (page) => {
     setPage(page);
@@ -43,7 +37,28 @@ const Photo = () => {
 
   const indexOfLastGuest = page * itemsPerPage;
   const indexOfFirstGuest = indexOfLastGuest - itemsPerPage;
-  const currentGuests = guests.slice(indexOfFirstGuest, indexOfLastGuest); // 현재 페이지의 손님을 가져옵니다.
+  const currentGuests = guests.slice(indexOfFirstGuest, indexOfLastGuest);
+
+  /* DELETE */
+  const remove = (id, event) => {
+    event.preventDefault();
+    fetch(`http://localhost:3001/photo/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" }
+    })
+      .then((res) => {
+        if (res.ok) {
+          alert("삭제되었습니다.");
+          setGuests((prevGuests) => prevGuests.filter((guest) => guest.id !== id));
+        } else {
+          alert("삭제 실패: " + res.status + " " + res.statusText);
+        }
+      })
+      .catch((err) => {
+        console.error("삭제 오류:", err);
+        alert("삭제 중 오류가 발생했습니다.");
+      });
+  };
 
   return (
     <div className='photo'>
@@ -53,7 +68,7 @@ const Photo = () => {
             <button>글쓰기</button>
           </Link>
         </div>
-        {currentGuests.map((photoItem) => ( // currentGuests를 사용하여 데이터 출력
+        {currentGuests.map((photoItem) => (
           <div key={photoItem.id}>
             <h3 className='photoTop'>{photoItem.title}</h3>
             <div className='photoMiddle'>
@@ -69,7 +84,7 @@ const Photo = () => {
               <Link to={`/photo/photoReWrite/${photoItem.id}`}>
                 <button>수정</button>
               </Link>
-              <button>삭제</button>
+              <button onClick={(event) => remove(photoItem.id, event)}>삭제</button>
             </div>
 
             <div className='photoPeople'>
@@ -83,34 +98,20 @@ const Photo = () => {
             </div>
 
             <div className='photopeoplewrite'>
-              <ul>
-                {photoItem.coment && photoItem.coment.map((comment, index) => (
-                  <li key={index}>
-                    {Object.keys(comment).map((author) => (
-                      <span key={author}>
-                        {author}: {comment[author]}
-                      </span>
-                    ))}
-                    <span>
-                      <button>수정</button>
-                      <button>삭제</button>
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              <PhotoComent comments={photoItem.coment} />
             </div>
           </div>
         ))}
       </div>
       <div className='page'>
         <Pagination 
-          activePage={page} // 현재 페이지
-          itemsCountPerPage={itemsPerPage} // 한 페이지에 보여줄 아이템 개수
-          totalItemsCount={totalItemsCount} // 총 아이템 개수
-          pageRangeDisplayed={5} // 보여줄 페이지 범위
-          prevPageText={"‹"} // "이전" 텍스트
-          nextPageText={"›"} // "다음" 텍스트
-          onChange={handlePageChange} // 페이지 변경 핸들러 
+          activePage={page}
+          itemsCountPerPage={itemsPerPage}
+          totalItemsCount={totalItemsCount}
+          pageRangeDisplayed={5}
+          prevPageText={"‹"}
+          nextPageText={"›"}
+          onChange={handlePageChange}
         />
       </div>
     </div>

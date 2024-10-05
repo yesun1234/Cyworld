@@ -10,6 +10,7 @@ const PhotoReWrite = () => {
   const [content, setContent] = useState('');
   const [selectedNav, setSelectedNav] = useState(''); 
   const [title, setTitle] = useState('');
+  const [coment, setComent] = useState([]); // 댓글 상태 추가
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const PhotoReWrite = () => {
       setTitle(data.title);
       setContent(data.content);
       setSelectedNav(data.nav || (photoNav[0]?.nav || '')); // 네비게이션 설정
+      setComent(data.coment || []); // 기존 댓글 데이터를 상태에 저장
     };
     
     fetchData();
@@ -55,7 +57,8 @@ const PhotoReWrite = () => {
         nav: selectedNav,
         title: title,
         content: content,
-        date: new Date().toISOString()
+        date: new Date().toISOString(),
+        coment: coment // 댓글도 함께 전송
       })
     });
     if (response.ok) {
