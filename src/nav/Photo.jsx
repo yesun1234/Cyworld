@@ -66,8 +66,9 @@ const Photo = () => {
             </div>
 
             <div className='photobottom'>
-              
-              <button>수정</button>
+              <Link to={`/photo/photoReWrite/${photoItem.id}`}>
+                <button>수정</button>
+              </Link>
               <button>삭제</button>
             </div>
 

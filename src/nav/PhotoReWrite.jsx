@@ -2,34 +2,28 @@ import React, { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import UseFetch from '../fetch/UseFetch';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const PhotoWrite = () => {
+const PhotoReWrite = () => {
   const photoNav = UseFetch('http://localhost:3001/photoList') || [];
-  
+  const { id } = useParams(); // useParams에서 id 가져오기
   const [content, setContent] = useState('');
-  const [nextNo, setNextNo] = useState(0);
-  const [selectedNav, setSelectedNav] = useState(photoNav[0]?.nav || ''); // 기본값 설정
+  const [selectedNav, setSelectedNav] = useState(''); 
   const [title, setTitle] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (photoNav.length > 0) {
-      setSelectedNav(photoNav[0].nav); // 첫 번째 nav 값을 기본값으로 설정
-    }
-    writeNo();
-  }, [photoNav]);
-
-  const writeNo = async () => {
-    const response = await fetch(`http://localhost:3001/photo`);
-    const data = await response.json();
-    if (data.length > 0) {
-      const maxNo = Math.max(...data.map(photo => parseInt(photo.id, 10)));
-      setNextNo(maxNo + 1);
-    } else {
-      setNextNo(0);
-    }
-  }
+    // 서버에서 해당 id의 데이터를 가져와서 상태에 저장
+    const fetchData = async () => {
+      const response = await fetch(`http://localhost:3001/photo/${id}`);
+      const data = await response.json();
+      setTitle(data.title);
+      setContent(data.content);
+      setSelectedNav(data.nav || (photoNav[0]?.nav || '')); // 네비게이션 설정
+    };
+    
+    fetchData();
+  }, [id, photoNav]);
 
   const handleChange = (value) => {
     setContent(value);
@@ -37,10 +31,6 @@ const PhotoWrite = () => {
 
   const handleNavChange = (e) => {
     setSelectedNav(e.target.value);
-  };
-
-  const onEditorSaveHandler = () => {
-    console.log(content);
   };
 
   const modules = {
@@ -55,13 +45,13 @@ const PhotoWrite = () => {
   };
 
   const write = async () => {
-    const response = await fetch(`http://localhost:3001/photo`, {
-      method: "POST",
+    const response = await fetch(`http://localhost:3001/photo/${id}`, {
+      method: "PUT", // 수정 요청은 PUT 메서드 사용
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        id: String(nextNo),
+        id, // 기존 id 그대로 사용
         nav: selectedNav,
         title: title,
         content: content,
@@ -69,12 +59,12 @@ const PhotoWrite = () => {
       })
     });
     if (response.ok) {
-      navigate('/photo')
-      console.log('저장 완료');
+      navigate('/photo');
+      console.log('수정 완료');
     } else {
-      console.error('저장 실패');
+      console.error('수정 실패');
     }
-  }
+  };
 
   return (
     <div className='photoWrite'>
@@ -106,4 +96,4 @@ const PhotoWrite = () => {
   );
 };
 
-export default PhotoWrite;
+export default PhotoReWrite;
