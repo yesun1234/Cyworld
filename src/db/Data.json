@@ -97,7 +97,16 @@
       "nav": "오예!!!!!!!",
       "title": "배고픈디?",
       "content": "<ol><li><strong><em>배고픈디??</em></strong><span class=\"ql-cursor\">﻿</span></li></ol>",
-      "date": "2024-10-03T06:43:17.527Z"
+      "date": "2024-10-03T06:43:18.862Z",
+      "coment": [
+        {
+          "id": "1",
+          "name": "새로운 사용자",
+          "coment": "왜 안되는거임?",
+          "date": "2024-10-06T09:23:13.670Z",
+          "rewrite": false
+        }
+      ]
     },
     {
       "id": "6",
@@ -105,89 +114,6 @@
       "title": "배고픈디?",
       "content": "<ol><li><strong><em>배고픈디??</em></strong><span class=\"ql-cursor\">﻿</span></li></ol>",
       "date": "2024-10-03T06:43:18.862Z"
-    },
-    {
-      "id": "7",
-      "nav": "오예!",
-      "title": "될까??",
-      "content": "<h1><em class=\"ql-font-serif\">될까?</em><strong><span class=\"ql-cursor\">﻿</span></strong></h1>",
-      "date": "2024-10-05T04:51:55.726Z",
-      "coment": [
-        {
-          "id": "1",
-          "name": "새로운 사용자",
-          "coment": "될까?",
-          "date": "2024-10-06T07:55:11.857Z",
-          "rewrite": false
-        },
-        {
-          "id": "2",
-          "name": "새로운 사용자",
-          "coment": "안될거같아..",
-          "date": "2024-10-06T07:55:34.156Z",
-          "rewrite": true
-        }
-      ]
-    },
-    {
-      "id": "8",
-      "nav": "공부해보자~~!",
-      "title": "과연?",
-      "content": "<p>과연?!?!</p>",
-      "date": "2024-10-05T04:55:21.425Z",
-      "coment": [
-        {
-          "id": "1",
-          "name": "새로운 사용자",
-          "coment": "비주얼스튜디오 좀 이상한듯 아 빡돌아",
-          "date": "2024-10-06T08:15:17.611Z",
-          "rewrite": true
-        }
-      ]
-    },
-    {
-      "id": "9",
-      "nav": "될까?",
-      "title": "될거같아??",
-      "content": "<p>될거같아??</p>",
-      "date": "2024-10-06T07:56:07.689Z",
-      "coment": [
-        {
-          "id": "1",
-          "name": "새로운 사용자",
-          "coment": "된다!! 완전잘돼",
-          "date": "2024-10-06T08:03:49.437Z",
-          "rewrite": true
-        },
-        {
-          "id": "2",
-          "name": "새로운 사용자",
-          "coment": "이제 삭제기능을 해보자!",
-          "date": "2024-10-06T07:58:03.204Z",
-          "rewrite": false
-        },
-        {
-          "id": "3",
-          "name": "새로운 사용자",
-          "coment": "될까?",
-          "date": "2024-10-06T08:11:57.514Z",
-          "rewrite": false
-        },
-        {
-          "id": "4",
-          "name": "새로운 사용자",
-          "coment": "배고픈데 살찔거같아서 못먹겠어",
-          "date": "2024-10-06T08:13:01.880Z",
-          "rewrite": false
-        },
-        {
-          "id": "5",
-          "name": "새로운 사용자",
-          "coment": "아니 이거 왜이럼? 짜증남",
-          "date": "2024-10-06T08:14:43.277Z",
-          "rewrite": true
-        }
-      ]
     }
   ],
   "diary": [
