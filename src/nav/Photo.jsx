@@ -87,18 +87,15 @@ const Photo = () => {
               <button onClick={(event) => remove(photoItem.id, event)}>삭제</button>
             </div>
 
-            <div className='photoPeople'>
-              <span>댓글</span>
-              <span>
-                <input />
-              </span>
-              <span>
-                <button>확인</button>
-              </span>
-            </div>
-
             <div className='photopeoplewrite'>
-              <PhotoComent comments={photoItem.coment} />
+            <PhotoComent 
+              id={photoItem.id}
+              comments={photoItem.coment} 
+              selectedNav={photoItem.nav} 
+              title={photoItem.title} 
+              content={photoItem.content} 
+              date={photoItem.date}
+            />
             </div>
           </div>
         ))}
