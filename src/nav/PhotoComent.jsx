@@ -8,21 +8,27 @@ const PhotoComent = ({ id, date, comments, selectedNav, title, content }) => {
   const [editedComment, setEditedComment] = useState(''); // 수정할 댓글 내용
   const navigate = useNavigate();
 
-  // 새로운 댓글 추가 함수
-  const handleAddComment = () => {
-    const updatedComments = [
-      ...coment,
-      {
-        name: '새로운 사용자',
-        coment: newComment,
-        date: new Date().toISOString(),
-        rewrite: false, // 새로운 댓글은 rewrite가 false
-      },
-    ];
-    setComent(updatedComments);
-    setNewComment(''); // 입력 필드를 초기화
-    updatePhotoComments(updatedComments); // 서버에 업데이트 요청
-  };
+ // 새로운 댓글 추가 함수
+const handleAddComment = () => {
+  // 기존 댓글 ID 중 가장 큰 값을 찾고, 그 다음 숫자를 새로운 ID로 설정
+  const maxId = coment.reduce((max, comment) => Math.max(max, parseInt(comment.id)), 0);
+  const newId = maxId + 1;
+
+  const updatedComments = [
+    ...coment,
+    {
+      id: newId.toString(), // 새로운 댓글 ID는 문자열로 변환
+      name: '새로운 사용자',
+      coment: newComment,
+      date: new Date().toISOString(),
+      rewrite: false, // 새로운 댓글은 rewrite가 false
+    },
+  ];
+  setComent(updatedComments);
+  setNewComment(''); // 입력 필드를 초기화
+  updatePhotoComments(updatedComments); // 서버에 업데이트 요청
+};
+
 
   // 댓글 수정 시작
   const handleEditClick = (index, comment) => {
@@ -69,6 +75,26 @@ const PhotoComent = ({ id, date, comments, selectedNav, title, content }) => {
     }
   };
 
+  /* DELETE */
+  // 댓글 삭제 함수
+const remove = async (commentId) => {
+  try {
+    const response = await fetch(`http://localhost:3001/photo/${commentId}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok) {
+      setComent(prevComments => prevComments.filter(comment => comment.id !== commentId));
+      console.log("댓글 삭제 완료");
+    } else {
+      console.error("댓글 삭제 실패:", response.statusText);
+    }
+  } catch (error) {
+    console.error("서버 요청 실패:", error);
+  }
+};
+
   return (
     <div>
       <ul>
@@ -93,7 +119,10 @@ const PhotoComent = ({ id, date, comments, selectedNav, title, content }) => {
                   <button onClick={() => handleSaveEdit(index)}>저장</button>
                 </div>
               ) : (
-                <button onClick={() => handleEditClick(index, comment)}>수정</button>
+                <span>
+                  <button onClick={() => handleEditClick(index, comment)}>수정</button>
+                  <button onClick={() => remove(comment.id)}>삭제</button> {/* comment.id 사용 */}
+                </span>
               )}
             </div>
           </li>
