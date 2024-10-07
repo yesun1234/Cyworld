@@ -76,7 +76,7 @@ const PhotoComent = ({ id, date, comments, selectedNav, title, content }) => {
   const remove = async (commentId) => {
   console.log('삭제 요청할 댓글 ID:', commentId); // 추가
   try {
-    const response = await fetch(`http://localhost:3001/photo/${id}/?coment/${commentId}`, {
+    const response = await fetch(`http://localhost:3001/photo/${id}/coment/${commentId}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     });
