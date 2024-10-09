@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import UseFetch from '../fetch/UseFetch';
 import kakaoTalkPhoto from '../image/KakaoTalk_Photo_2024-09-19-18-17-35.png'
+import Photo from '../nav/Photo';
 
 const Aside = ({ showPhotoAlbum }) => {
     const photolists = UseFetch('http://localhost:3001/photoList');
@@ -146,16 +147,18 @@ const Aside = ({ showPhotoAlbum }) => {
                 <div className='photoside'>
                     <h4>PHOTO ALBUM</h4>
                     <ul>
+                        <Link to={'/photo'}><li>전체보기</li></Link>
                         {localPhotoLists.map((list) => (
                             <li key={list.id} className='asideEdit'>
                                 {isEditing ? (
                                     <input
                                         type='text'
-                                        value={editValues[list.id] !== undefined ? editValues[list.id] : list.nav} // Use editValues or fallback to list.nav
-                                        onChange={(e) => handleInputChange(list.id, e.target.value)} // Update the input field's value
+                                        value={editValues[list.id] !== undefined ? editValues[list.id] : list.nav}
+                                        onChange={(e) => handleInputChange(list.id, e.target.value)}
                                     />
                                 ) : (
-                                    <Link to='/photo'>{list.nav}</Link>
+                                    // nav 값을 포함하여 링크 생성
+                                    <Link key={list.id} to={`/photo/${list.nav}`}>{list.nav}</Link>
                                 )}
                                 {isEditing && (
                                     <button onClick={() => handleRemovePhoto(list.id)}>-</button>

@@ -44,6 +44,7 @@ const App = () => {
               <Route path="/board" element={<Board />} />
               <Route path="/guest" element={<Guest />} />
               <Route path="/photo" element={<Photo />} />
+              <Route path="/photo/:nav" element={<Photo />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/photo/photoWrite" element={<PhotoWrite />} />
               <Route path='/photo/photoReWrite/:id' element={<PhotoReWrite />} />

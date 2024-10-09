@@ -2,23 +2,27 @@ import React, { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import UseFetch from '../fetch/UseFetch';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const PhotoWrite = () => {
+  const { nav } = useParams(); // URL에서 nav 값을 가져옵니다.
   const photoNav = UseFetch('http://localhost:3001/photoList') || [];
   
   const [content, setContent] = useState('');
   const [nextNo, setNextNo] = useState(0);
-  const [selectedNav, setSelectedNav] = useState(photoNav[0]?.nav || ''); // 기본값 설정
+  const [selectedNav, setSelectedNav] = useState(''); // 초기값을 빈 문자열로 설정
   const [title, setTitle] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (photoNav.length > 0) {
-      setSelectedNav(photoNav[0].nav); // 첫 번째 nav 값을 기본값으로 설정
+    // URL의 nav 값을 사용하여 selectedNav 업데이트
+    if (nav) {
+      setSelectedNav(decodeURIComponent(nav)); // URL 디코딩
+    } else if (photoNav.length > 0) {
+      setSelectedNav(photoNav[0]?.nav || ''); // nav가 없으면 첫 번째 nav 사용
     }
     writeNo();
-  }, [photoNav]);
+  }, [photoNav, nav]);
 
   const writeNo = async () => {
     const response = await fetch(`http://localhost:3001/photo`);
@@ -29,14 +33,14 @@ const PhotoWrite = () => {
     } else {
       setNextNo(0);
     }
-  }
+  };
 
   const handleChange = (value) => {
     setContent(value);
   };
 
   const handleNavChange = (e) => {
-    setSelectedNav(e.target.value);
+    setSelectedNav(e.target.value); // 드롭다운에서 선택된 nav 값 업데이트
   };
 
   const onEditorSaveHandler = () => {
@@ -69,12 +73,12 @@ const PhotoWrite = () => {
       })
     });
     if (response.ok) {
-      navigate('/photo')
+      navigate('/photo');
       console.log('저장 완료');
     } else {
       console.error('저장 실패');
     }
-  }
+  };
 
   return (
     <div className='photoWrite'>

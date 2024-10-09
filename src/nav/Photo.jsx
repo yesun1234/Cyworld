@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import dummy from '../db/Data.json';
 import Pagination from 'react-js-pagination';
 import PhotoComent from './PhotoComent';
 
 const Photo = () => {
+  const { nav } = useParams(); // URL에서 nav 값을 가져옴
   const photos = dummy.photo;
 
   // 날짜를 'YYYY.MM.DD HH:mm' 형식으로 변환하는 함수
@@ -25,10 +26,15 @@ const Photo = () => {
   const itemsPerPage = 5;
 
   useEffect(() => {
-    const sortedGuests = photos.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // nav 값에 맞는 사진들만 필터링하거나 첫 화면에서는 모든 사진 보여주기
+    const filteredPhotos = nav === '전체보기' || !nav 
+      ? photos 
+      : photos.filter(photo => photo.nav === nav);
+
+    const sortedGuests = filteredPhotos.sort((a, b) => new Date(b.date) - new Date(a.date));
     setGuests(sortedGuests);
     setTotalItemsCount(sortedGuests.length);
-  }, [photos]);
+  }, [photos, nav]);
 
   const handlePageChange = (page) => {
     setPage(page);
@@ -64,7 +70,7 @@ const Photo = () => {
     <div className='photo'>
       <div className='scroll-content'>
         <div className='photowrite'>
-          <Link to='/photo/photoWrite'>
+          <Link to={`/photo/photoWrite?nav=${nav}`}>
             <button>글쓰기</button>
           </Link>
         </div>
@@ -88,14 +94,14 @@ const Photo = () => {
             </div>
 
             <div className='photopeoplewrite'>
-            <PhotoComent 
-              id={photoItem.id}
-              comments={photoItem.coment} 
-              selectedNav={photoItem.nav} 
-              title={photoItem.title} 
-              content={photoItem.content} 
-              date={photoItem.date}
-            />
+              <PhotoComent 
+                id={photoItem.id}
+                comments={photoItem.coment} 
+                selectedNav={photoItem.nav} 
+                title={photoItem.title} 
+                content={photoItem.content} 
+                date={photoItem.date}
+              />
             </div>
           </div>
         ))}

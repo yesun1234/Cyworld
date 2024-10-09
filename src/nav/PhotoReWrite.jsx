@@ -62,7 +62,7 @@ const PhotoReWrite = () => {
       })
     });
     if (response.ok) {
-      navigate('/photo');
+      navigate(-1);
       console.log('수정 완료');
     } else {
       console.error('수정 실패');

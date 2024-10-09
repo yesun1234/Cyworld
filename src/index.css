@@ -50,11 +50,11 @@ code {
 .aside .asideBottom{margin-top: 70px;border-bottom: 1px solid #999;margin-bottom: 8px;}
 .aside .asideLast div{display: flex;}
 
-.nav a{color: #fff;text-decoration: none;pointer-events: all;display: inline-block;cursor: pointer;}
+.nav a{color: #fff;text-decoration: none;pointer-events: all;display: block;cursor: pointer;}
 .nav ul{list-style-type: none;padding: 0;}
 .nav ul li{text-align: center;border-left: none !important; border: 1px solid #666;border-top-left-radius: 0 !important; border-bottom-left-radius:0 !important;border-radius: 4px;padding: 6px 3px;background-color: rgb(56 142 176);}
 
-.nav ul li + li{margin-top: 10px;}
+.nav ul a + a{margin-top: 10px;}
 
 .guesttop{display: block; background: #f2f2f2;width: 91%;height: 131px;margin: 10px auto;border-top: 1px solid #999;border-bottom: 1px solid #999;padding: 13px 11px;position: relative;}
 .guesttop .profile{position: relative;width: 105px;height: 105px;}
