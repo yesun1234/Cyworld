@@ -97,6 +97,7 @@ const GuestBottom = ({ currentGuests, setGuests }) => {
                   <img src='/Cyworld/static/media/KakaoTalk_Photo_2024-09-19-18-17-35.fccafeb60e41252e995a.png' alt="사이월드 로고" />
                 </div>
                 <div className='write'>
+                  <p>
                   {editingGuest && editingGuest.id === guest.id ? (
                     <div>
                       <textarea 
@@ -109,6 +110,7 @@ const GuestBottom = ({ currentGuests, setGuests }) => {
                   ) : (
                     guest.content
                   )}
+                  </p>
                 </div>
               </div>
             </div>

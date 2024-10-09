@@ -95,6 +95,20 @@ const PhotoComent = ({ id, date, comments, selectedNav, title, content }) => {
 
   return (
     <div>
+      <div className='photoPeople'>
+        <span>댓글</span>
+        <span>
+          <input
+            type='text'
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            placeholder='댓글 입력'
+          />
+        </span>
+        <span>
+          <button onClick={handleAddComment}>확인</button>
+          </span>
+      </div>
       <ul>
         {coment.map((comment, index) => (
           <li key={index}>
@@ -126,15 +140,7 @@ const PhotoComent = ({ id, date, comments, selectedNav, title, content }) => {
         ))}
       </ul>
 
-      <div className='photoPeople'>
-        <input
-          type='text'
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          placeholder='댓글 입력'
-        />
-        <button onClick={handleAddComment}>확인</button>
-      </div>
+      
     </div>
   );
 };

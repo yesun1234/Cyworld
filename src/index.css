@@ -54,7 +54,7 @@ code {
 .nav ul{list-style-type: none;padding: 0;}
 .nav ul li{text-align: center;border-left: none !important; border: 1px solid #666;border-top-left-radius: 0 !important; border-bottom-left-radius:0 !important;border-radius: 4px;padding: 6px 3px;background-color: rgb(56 142 176);}
 
-.nav ul a + a{margin-top: 10px;}
+.nav ul a + a{margin-top: 2px;}
 
 .guesttop{display: block; background: #f2f2f2;width: 91%;height: 131px;margin: 10px auto;border-top: 1px solid #999;border-bottom: 1px solid #999;padding: 13px 11px;position: relative;}
 .guesttop .profile{position: relative;width: 105px;height: 105px;}
@@ -67,7 +67,12 @@ code {
 
 .guestbottom{display: block; width: 91%;margin: 0px auto;padding: 13px 11px;position: relative;padding-left: 0;padding-bottom: 0;}
 .guestbottom .profile{position: relative;width: 105px;height: 105px;margin-left: 0 !important;}
-.guestbottom .write{width: 268px;margin-right: 0 !important;border: none !important;text-align: left;padding-top: 21px;}
+.guestbottom .write{width: 268px;margin-right: 0 !important;border: none !important;text-align: left;padding-top: 12px;max-height: 88px;overflow-y: auto;}
+.guestbottom .write p{
+  height: auto;                /* 높이를 자동으로 조절 */
+  text-align: left;           /* 왼쪽 정렬 */
+  margin: 0; 
+}
 .guestbottom .profile img{position: absolute;top: -34px;left: 1px;}
 .guestbottom .profile, .write{display: inline-block;vertical-align: top;background: #fff;height: 81%;margin: 4px;}
 .guestbottom img{width: 100px;}
@@ -122,13 +127,14 @@ form{display: inline;}
 
 .photo{padding: 10px 6px 10px 10px;}
 .photoPeople{background: #f6f6f6;padding: 6px 4px;}
-.photoPeople input{width: 77%;}
+.photoPeople input{width: 321px;}
 .photoPeople span + span{margin-left: 10px;}
 .photopeoplewrite {margin-top: 6px;}
-.photopeoplewrite ul{padding: 0;}
-.photopeoplewrite ul li{list-style-type: none; position: relative;display: flex;align-items: center;justify-content: space-between;}
+.photopeoplewrite ul{padding: 0;margin: 0;}
+.photopeoplewrite ul li{list-style-type: none; position: relative;display: flex;align-items: center;justify-content: space-between;background: #f6f6f6;padding: 7px 4px;}
 .photopeoplewrite ul li button{border: none;background: #f6f6f6;}
 .photopeoplewrite ul li + li{margin-top: 3px;}
+.photophotowirte > div {padding: 0 10px;}
 
 .photoWrite{padding: 10px;}
 .photowritetop{display: flex; align-items: center;}
@@ -150,11 +156,10 @@ form{display: inline;}
 .note-editable {min-height: 200px; /* 편집기 최소 높이 설정 */border: 1px solid #ced4da; /* 편집기 테두리 설정 */}
 
 .photo {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif;}
-.photowrite {margin: 20px 0;}
-.photoTop {font-size: 24px;font-weight: bold;margin: 10px 0;}
+.photoTop {font-size: 15px;font-weight: bold;margin: 10px 0;text-align: center; background: #f6f5f5; border-top: 1px solid #dbdada;padding: 3px;}
 .photoMiddle {display: flex;justify-content: space-between;}
 .photoPhoto img {max-width: 100%;height: auto;}
 .photophotowirte {margin: 10px 0;}
 .photoPeople {display: flex;align-items: center;margin-top: 20px;}
-.photopeoplewrite ul {list-style-type: none;background: #f6f6f6;padding: 1px 4px;}
-.photopeoplewrite li {display: flex;justify-content: space-between;margin: 5px 0;}
+
+
