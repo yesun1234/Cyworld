@@ -104,6 +104,7 @@ form{display: inline;}
 
 .photoside{height: 348px;position: relative;}
 .photoside ul{padding: 0; list-style-type: none;}
+.photoside ul > a:first-of-type{font-weight: bold;}
 .photoside li{text-align: left;position: relative;}
 .photoside a{text-decoration: none;color: #333;}
 .photoside .phtoasidebutton{position: absolute;bottom: 0px;right: 0;}

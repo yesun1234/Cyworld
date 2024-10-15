@@ -29,7 +29,7 @@ const App = () => {
   }, []);
   
   return (
-    <Router basename="/Cyworld">
+    <Router>
       <div className='app'>
         <div className='outline'></div>
         <div className='inline'></div>
