@@ -15,6 +15,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.home .homeTop p{font-weight: bold;color: #1094ba;}
+
 .homemain{height: auto; width: 1200px;height: 500px;padding-left: 60px;padding-top: 30px;z-index:1;position: relative;background: url(./image/bg.jpg) no-repeat center;}
 .homemainlogo{display: flex; align-items: baseline;justify-content: center;padding-top: 88px;margin-bottom: 21px;}
 .homemaincontainer{margin: 0 auto; width: 470px; height: 470px; border-radius: 50%; background: #fff;}
@@ -116,7 +118,7 @@ input[type="radio"]:checked + .custom-radio::after {content: '';width: 8px;heigh
 .header .leftHeader span {margin-right: 5px;}
 .header .leftHeader div span:first-child{font-size: 11px;}
 .header .leftHeader div:first-child span:first-child{color: red;}
-.header .mainHeader {margin-left: 15px; color: blue;}
+.header .mainHeader {margin-left: 15px; color: #1094ba;}
 .header .rightHeader{text-align: right;}
 .header .rightHeader span:last-child{display: block;font-size: 11px;}
 .header .rightHeader span:first-child{margin-right: 10px;}
