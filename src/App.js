@@ -11,10 +11,12 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import PhotoWrite from './nav/PhotoWrite';
 import PhotoReWrite from './nav/PhotoReWrite';
 import Main from './nav/Main';
+import Join from './nav/Join';
+import Find from './nav/Find';
 
 const AppContent = () => {
-  const [showPhotoAlbum, setShowPhotoAlbum] = useState(false); // State for controlling photo album visibility
-  const location = useLocation(); // Hook to get the current location (path)
+  const [showPhotoAlbum, setShowPhotoAlbum] = useState(false); 
+  const location = useLocation();
 
   useEffect(() => {
     const app = document.querySelector('.content');
@@ -34,8 +36,8 @@ const AppContent = () => {
     };
   }, []);
 
-  // Check if we are on the main page (root URL)
-  const isMainPage = location.pathname === '/';
+  // Check if we are on the main page (root URL) or join page
+  const isMainPage = location.pathname === '/' || location.pathname === '/join' || location.pathname === '/find';
 
   return (
     <div className='app'>
@@ -65,6 +67,8 @@ const AppContent = () => {
       )}
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path='/join' element={<Join />} />
+        <Route path='/find' element={<Find />} />
       </Routes>
     </div>
   );

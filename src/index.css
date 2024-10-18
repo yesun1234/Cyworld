@@ -43,6 +43,57 @@ code {
 .homemainbottom a{text-decoration: none; color: #999;font-size: 14px; letter-spacing: 2.4px;}
 .homemainbottom{margin: 0 auto;width: 220px;}
 
+.find{height: auto; width: 1200px;height: 500px;padding-left: 60px;padding-top: 30px;z-index:1;position: relative;}
+.find .findtop .findtop-top{height: 25px; background: #dddddd;border-bottom: 1px solid #dcdcdc;color: #fff;text-align: left;font-size: 14px;font-weight: 700;padding-left: 19px;padding-top: 8px;}
+.find .joinTop button{width: 46.6%;display: inline-block;text-align: center;padding: 12px 20px;background: gray;color: #fff;font-weight: 700;border: none;cursor: pointer;}
+.find input[type="radio"]{opacity: 1;position: relative;}
+.find .findtop{padding: 0px 0 0px 0;margin: 0 auto;width: 405px;border: 1px solid #dcdcdc;border-top: 2px solid #999999;margin-top: 10px;}
+.find .findmain{padding: 13px 0 26px 0;margin: 22px auto;width: 405px;}
+.find .findmain div + div{margin-top: 20px;}
+.find .joinStart{width: 1122px;}
+.find .findmain div{display: flex;align-items: center; justify-content: flex-start;}
+.find .findmain div span:first-child{width: 77px;text-align: right;margin-right: 16px;}
+.find .findmain button{background: #ff4949; border: none; border-radius: 4px;color: #fff;padding: 6px 15px;margin-left: 6px;}
+.find .findmain .findmainbtn{display: flex;justify-content: center;width: 405px;}
+.find .findtop .finttio-bottom{display: flex;align-items: center;justify-content: space-around;margin-top: 37px;}
+.find .findmain input{border: 1px solid #ededed;box-shadow: inset -1px -2px 7px rgba(0, 0, 0, 0.1);padding: 4px 5px; border-radius: 3px;}
+.find .findmain select {border: 1px solid #ededed;box-shadow: inset -1px -2px 7px rgba(0, 0, 0, 0.1);padding: 4px 5px; border-radius: 3px;}
+.find .findmain .longinput input{width: 242px;}
+.find .findmain .findmainbtn{margin-top: 46px;}
+
+.join{height: auto; width: 1200px;height: 500px;padding-left: 60px;padding-top: 30px;z-index:1;position: relative;}
+.joinLogo{display: flex;align-items: center;color: #504e4e; font-weight: 1000; font-size: 18px;letter-spacing: -0.7px;}
+.joinLogo img{width: 32px;}
+.joinLogo a{text-decoration: none; color: #504e4e;}
+.joinLogo span + span{margin-left: 6px;}
+.joinTop{display: block; width: 100%;margin-bottom: 40px;}
+.joinTop span{width: 46.6%; display: inline-block; text-align: center;padding: 12px 20px; background: gray; color: #fff; font-weight: 700;}
+
+.joinStart{font-size: 16px; font-weight: 500;color: #504e4e; border-bottom: 2px solid #999;display: block;padding: 0px 0px 3px 0px;}
+
+.finishMessage{padding: 13px 0 41px 0;margin: 0 auto;width: 214px;}
+.finishMessage a{display: flex; justify-content: center;text-decoration: none;}
+
+.joinMain{padding: 13px 0 41px 0;margin: 0 auto;width: 552px;}
+.joinMain ul{list-style-type: none;padding: 0;}
+.joinMain ul li{display: flex; justify-content: flex-start;align-items: center;}
+.joinMain ul li + li{margin-top: 10px;}
+.joinMain ul li span:first-child{width: 72px;text-align: right;margin-right: 10px;}
+.joinMain input{border: 1px solid #ededed;box-shadow: inset -1px -2px 7px rgba(0, 0, 0, 0.1);padding: 8px 15px; border-radius: 3px;}
+.joinMain select{width: 100px;height: 30px; border: 1px solid #cecdcd; border-radius: 3px; padding: 0px 3px;}
+.join button{background: #ff4949; border: none; border-radius: 4px;color: #fff;padding: 6px 15px;margin-left: 6px;}
+.joinMain ul li:first-child span:last-child{width: 93px;margin-left: 6px;text-align: justify;display: block;font-size: 11px; color: #555555;}
+.joinMain ul li:not(:first-child, :nth-of-type(6)) input{width: 333px;}
+.joinMain ul li:nth-of-type(6) span:nth-child(2), li:nth-of-type(6) span:nth-child(2){margin-right: 37px;display: flex;align-items: center;}
+.joinMain ul li:nth-of-type(6) span:nth-child(3){display: flex;align-items: end;}
+
+input[type="radio"] {position: absolute;z-index: 1000;opacity: 0;}
+.custom-radio {width: 16px;height: 16px;border: 1px solid #cecdcd;border-radius: 50%;display: inline-block;position: relative;margin: 0px 5px !important;}
+input[type="radio"]:checked + .custom-radio {background-color: #007BFF;border-color: #007BFF;}
+input[type="radio"]:checked + .custom-radio::after {content: '';width: 8px;height: 8px;background: white;border-radius: 50%;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
+
+.joinNext{display: flex;justify-content: end;border-top: 1px solid #999;padding-top: 10px;}
+
 .appbg{height: auto; width: 1200px;background: skyblue;height: 500px;padding-left: 60px;padding-top: 30px;z-index:1;position: relative;}
 .app .outline::after{border: 1px solid #fff;content: "";position: absolute;width: 18.5%;height: 93.5%;left: 28px;top: 6px;border-right: none;border-radius: 8px;}
 .app .outline::before{border: 1px solid #fff;content: "";position: absolute;width: 40.4%;height: 93.5%;left: 261px;top: 6px;border-left: none;border-radius: 8px;}
