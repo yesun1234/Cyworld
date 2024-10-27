@@ -42,6 +42,7 @@ const AppContent = () => {
   return (
     <div className='app'>
       {!isMainPage && (
+        <div className='bgoutline'>
         <div className='appbg'>
           <div className='outline'></div>
           <div className='inline'></div>
@@ -63,6 +64,7 @@ const AppContent = () => {
             </div>
             <Nav setShowPhotoAlbum={setShowPhotoAlbum} /> {/* Pass setShowPhotoAlbum function */}
           </div>
+        </div>
         </div>
       )}
       <Routes>

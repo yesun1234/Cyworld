@@ -77,20 +77,24 @@ const GuestBottom = ({ currentGuests, setGuests }) => {
           <div className='guestbottom' key={`${guest.id}-${index}`}>
             <div className='guest-item'>
               <div className='profiletop'>
-                <span>no.{guest.no}</span>
-                <span>{guest.name}</span>
-                <span>
-                  <Link to="/">
-                    <FontAwesomeIcon icon={faHome} />
-                  </Link>
-                </span>
-                <span>({formatDate(guest.date)})</span>
-                <span className='del'>
-                  <button onClick={(event) => remove(guest.id, event)}>삭제</button>
-                </span>
-                <span className='change'>
-                  <button onClick={() => handleEditClick(guest)}>수정</button>
-                </span>
+                <div>
+                  <span>no.{guest.no}</span>
+                  <span>{guest.name}</span>
+                  <span>
+                    <Link to="/">
+                      <FontAwesomeIcon icon={faHome} />
+                    </Link>
+                  </span>
+                  <span>({formatDate(guest.date)})</span>
+                </div>
+                <div>
+                  <span className='del'>
+                    <button onClick={(event) => remove(guest.id, event)}>삭제</button>
+                  </span>
+                  <span className='change'>
+                    <button onClick={() => handleEditClick(guest)}>수정</button>
+                  </span>
+                </div>
               </div>
               <div className='profilebottom'>
                 <div className='profile'>

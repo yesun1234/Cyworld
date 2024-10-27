@@ -138,13 +138,13 @@ const Aside = ({ showPhotoAlbum }) => {
 
                     <div className='asideMain'>사이좋은 사람들 싸이월드 ^~^</div>
 
-                    <div className='asideBottom flex s-b'>
+                    <div className='asideBottom s-b'>
                         <div>HISTORY</div>
                         <div>upDown</div>
                     </div>
 
                     <div className='asideLast'>
-                        <div className='flex'>
+                        <div className='asideLastflex'>
                             <div>싸이월드</div>
                             <div>여 1999.07.07</div>
                         </div>
