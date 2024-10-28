@@ -13,6 +13,7 @@ import PhotoReWrite from './nav/PhotoReWrite';
 import Main from './nav/Main';
 import Join from './nav/Join';
 import Find from './nav/Find';
+import RightSide from './nav/RightSide';
 
 const AppContent = () => {
   const [showPhotoAlbum, setShowPhotoAlbum] = useState(false); 
@@ -65,6 +66,7 @@ const AppContent = () => {
             <Nav setShowPhotoAlbum={setShowPhotoAlbum} /> {/* Pass setShowPhotoAlbum function */}
           </div>
         </div>
+        <RightSide />
         </div>
       )}
       <Routes>

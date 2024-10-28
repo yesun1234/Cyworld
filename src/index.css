@@ -112,7 +112,7 @@ input[type="radio"]:checked + .custom-radio {background-color: #007BFF;border-co
 input[type="radio"]:checked + .custom-radio::after {content: '';width: 8px;height: 8px;background: white;border-radius: 50%;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
 
 .joinNext{display: flex;justify-content: end;border-top: 1px solid #999;padding-top: 10px;width: 97.5%;}
-.bgoutline{height: 100vh !important;min-width: 1090px;min-height: 100%; width: 100%;background: skyblue;background-size: cover; height: 500px;padding:24px 21px;z-index:1;position: relative;}
+.bgoutline{height: 100vh !important;min-width: 1090px;min-height: 100%; width: 100%;background: skyblue;background-size: cover; height: 500px;padding:24px 21px;z-index:1;position: relative;display: flex;}
 .appbg{height: 592px !important; width: 941px;background: #4997be;background-size: cover; height: 500px;padding:24px 17px;z-index:1;position: relative;padding-top: 30px;padding-left: 52px;border-radius: 8px;}
 .app .outline::after{border: 1px solid #fff;content: "";position: absolute;width: 293px;height: 630px;left: 26px;top: 6px;border-right: none;border-radius: 8px;}
 .app .outline::before{border: 1px solid #fff;content: "";position: absolute;width: 637px;height: 630px;left: 320px;top: 6px;border-left: none;border-radius: 8px;}
@@ -265,3 +265,22 @@ form{display: inline;}
 .photoPeople {display: flex;align-items: center;margin-top: 20px;}
 
 
+.rightside{width: 179px; height: 253px; background: #fff;margin-left: 10px;padding: 5px;}
+.rightside .righttop{width: 179px;display: flex;justify-content: space-around;align-items: center;border-bottom: 2px solid #ededed;}
+.rightside .righttop  div{width: 94px; display: flex;}
+.rightside .righttop span{width: 20px;display: block;border: 1px solid #999;padding: 3px;height: 20px;}
+.rightside .righttop span + span{margin-left: 4px;}
+.rightside .righttop span img{width: 100%;}
+
+.rightside .rightmiddle{border-bottom: 2px solid #ededed;}
+.rightside .rightmiddle ul{list-style-type: none;padding: 0;}
+.rightside .rightmiddle ul li span:first-child{width: 45px;}
+.rightside .rightmiddle ul li span:nth-child(2){width: 55%;height: 8px; border: 1px solid #999;display: block;border-radius:8px;}
+.rightside .rightmiddle ul li{display: flex; justify-content: space-around;align-items: center;}
+.rightside .rightmiddle ul li button{width: 22px;padding: 0;height: 17px;}
+
+.rightside .rightbottom ul{padding: 0;list-style: none;}
+.rightside .rightbottom ul li span + span{margin-left: 3px;}
+.rightside .rightbottom ul li span:nth-child(2),
+.rightside .rightbottom ul li span:nth-child(3){font-size: 10px;}
+.rightside .rightbottom ul li span:nth-child(3){background: orange;color: #fff;border-radius: 4px;padding: 2px 4px;}
