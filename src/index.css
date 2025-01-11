@@ -268,7 +268,7 @@ form{display: inline;}
 .rightside{width: 179px; height: 253px; background: #fff;margin-left: 10px;padding: 5px;}
 .rightside .righttop{width: 179px;display: flex;justify-content: space-around;align-items: center;border-bottom: 2px solid #ededed;}
 .rightside .righttop  div{width: 94px; display: flex;}
-.rightside .righttop span{width: 20px;display: block;border: 1px solid #999;padding: 3px;height: 20px;}
+.rightside .righttop span{width: 20px;display: block;border: 1px solid #c4c4c4;padding: 3px;height: 20px;}
 .rightside .righttop span + span{margin-left: 4px;}
 .rightside .righttop span img{width: 100%;}
 
@@ -277,10 +277,12 @@ form{display: inline;}
 .rightside .rightmiddle ul li span:first-child{width: 45px;}
 .rightside .rightmiddle ul li span:nth-child(2){width: 55%;height: 8px; border: 1px solid #999;display: block;border-radius:8px;}
 .rightside .rightmiddle ul li{display: flex; justify-content: space-around;align-items: center;}
-.rightside .rightmiddle ul li button{width: 22px;padding: 0;height: 17px;}
+.rightside .rightmiddle ul li button{width: 13px;padding: 0;height: 13px;display: flex;}
 
 .rightside .rightbottom ul{padding: 0;list-style: none;}
 .rightside .rightbottom ul li span + span{margin-left: 3px;}
-.rightside .rightbottom ul li span:nth-child(2),
-.rightside .rightbottom ul li span:nth-child(3){font-size: 10px;}
+.rightside .rightbottom .s-f{font-size: 10px;}
 .rightside .rightbottom ul li span:nth-child(3){background: orange;color: #fff;border-radius: 4px;padding: 2px 4px;}
+
+.rightside .minusLogo{width: 0.6em;position: relative;top: -2px;left: 0.5px;}
+.rightside .plusLogo{width: 0.5em; position: relative;top: -2px;left: 1.5px;}

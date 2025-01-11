@@ -3,13 +3,29 @@ import Img from '../image/logo.svg';
 import { Link } from 'react-router-dom';
 
 const Join = () => {
+    
+    const fetchJoin = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/member'); 
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json(); 
+            console.log('Fetched data:', data);
+        } catch (error) {
+            console.error('Failed to fetch members:', error);
+        }
+    };
+    
+    useEffect(() => {
+        fetchJoin();
+    }, []);    
+
     const years = [];
     for (let i = 1930; i <= 2005; i++) {
         years.push(i);
     }
 
-
-    // State for form fields
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedMonth, setSelectedMonth] = useState('');
     const [selectedDay, setSelectedDay] = useState('');
@@ -23,7 +39,6 @@ const Join = () => {
     const [step, setStep] = useState(1);
     const [finishi, setFinish] = useState(false);
 
-    // Refs for input elements
     const usernameRef = useRef();
     const passwordRef = useRef();
     const confirmPasswordRef = useRef();
@@ -33,7 +48,6 @@ const Join = () => {
     const monthRef = useRef();
     const dayRef = useRef();
 
-    // Function to get number of days in a month
     const getDaysInMonth = (year, month) => {
         if (!year || !month) return 31;
 
@@ -55,64 +69,48 @@ const Join = () => {
         }
     }, [selectedYear, selectedMonth]);
 
-    // Handle form submission
-    const handleSubmit = () => {
-        if (!username) {
-            alert('아이디를 입력해주세요');
-            usernameRef.current?.focus(); // Optional chaining
+    const handleSubmit = async () => {
+        if (!username || !password || !confirmPassword || !name || !phone || !gender || !selectedYear || !selectedMonth || !selectedDay) {
+            alert('모든 항목을 입력해주세요.');
             return;
         }
-        if (!password) {
-            alert('비밀번호를 입력해주세요');
-            passwordRef.current?.focus(); // Optional chaining
-            return;
-        }
-        if (!confirmPassword) {
-            alert('비밀번호 확인을 입력해주세요');
-            confirmPasswordRef.current?.focus(); // Optional chaining
-            return;
-        }
-        if (!name) {
-            alert('이름을 입력해주세요');
-            nameRef.current?.focus(); // Optional chaining
-            return;
-        }
-        if (!phone) {
-            alert('휴대폰 번호를 입력해주세요');
-            phoneRef.current?.focus(); // Optional chaining
-            return;
-        }
-        if (!gender) {
-            alert('성별을 선택해주세요');
-            return;
-        }
-        if (!selectedYear) {
-            alert('생년을 선택해주세요');
-            yearRef.current?.focus(); // Optional chaining
-            return;
-        }
-        if (!selectedMonth) {
-            alert('생월을 선택해주세요');
-            monthRef.current?.focus(); // Optional chaining
-            return;
-        }
-        if (!selectedDay) {
-            alert('생일을 선택해주세요');
-            dayRef.current?.focus(); // Optional chaining
-            return;
-        }
-
+    
         if (password !== confirmPassword) {
-            alert('비밀번호가 일치하지 않습니다');
-            confirmPasswordRef.current?.focus(); // Optional chaining
+            alert('비밀번호가 일치하지 않습니다.');
             return;
         }
-
-        // All fields valid, proceed with submission
-        console.log('가입 완료!');
-        setStep(2);
-        setFinish(true);
+    
+        const userData = {
+            username,
+            password,
+            name,
+            phone,
+            gender,
+            dob: `${selectedYear}-${selectedMonth}-${selectedDay}`, // 생년월일 조합
+        };
+    
+        try {
+            const response = await fetch('http://localhost:3001/member', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(userData), // JSON 형식으로 변환
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const result = await response.json();
+            console.log('Server response:', result);
+            alert('회원가입이 완료되었습니다!');
+            setStep(2);
+            setFinish(true);
+        } catch (error) {
+            console.error('Error during registration:', error);
+            alert('회원가입 중 오류가 발생했습니다.');
+        }
     };
+    
 
     return (
         <div className='join'>

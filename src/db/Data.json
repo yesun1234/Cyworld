@@ -21,6 +21,17 @@
       "nav": "사진첩"
     }
   ],
+  "member": [
+    {
+      "id": "fdee",
+      "username": "ddppu123",
+      "password": "asdasd123",
+      "name": "dsf",
+      "phone": "01041164661",
+      "gender": "female",
+      "dob": "2000-9-6"
+    }
+  ],
   "profile": [
     {
       "id": "0",

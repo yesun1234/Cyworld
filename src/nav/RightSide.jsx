@@ -3,6 +3,7 @@ import Img from '../image/girl_599666.png'
 import Img2 from '../image/B.png'
 import Img3 from '../image/laugh_12281373.png'
 import { FaMinus } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa";
 const RightSide = () => {
   return (
     <div className='rightside'>
@@ -19,17 +20,17 @@ const RightSide = () => {
             <li>
                 <span>액티브</span>
                 <span></span>
-                <span><button><FaMinus /></button></span>
+                <span><button><FaMinus className='minusLogo'/></button></span>
             </li>
             <li>
                 <span>페이머스</span>
                 <span></span>
-                <span><button><FaMinus /></button></span>
+                <span><button><FaMinus className='minusLogo'/></button></span>
             </li>
             <li>
                 <span>프랜들리</span>
                 <span></span>
-                <span><button><FaMinus /></button></span>
+                <span><button><FaPlus className='plusLogo'/></button></span>
             </li>
         </ul>
     </div>
@@ -37,10 +38,11 @@ const RightSide = () => {
         <ul>
             <li>
                 <span>스크랩 게시물</span>
-                <span>1234</span>
+                <span className='s-f'>1234</span>
                 <span>n</span>
             </li>
-            <li>즐겨찾기</li>
+            <li><span>즐겨찾기</span><span className='s-f'>1</span></li>
+            <li><span>사용중인아이템</span><FaPlus /><span>소망상자</span></li>
         </ul>
     </div>
     <div className='rightsound'>
