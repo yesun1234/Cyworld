@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Img from '../image/logo.svg';
 import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Join = () => {
     
@@ -30,6 +31,8 @@ const Join = () => {
     const [selectedMonth, setSelectedMonth] = useState('');
     const [selectedDay, setSelectedDay] = useState('');
     const [username, setUsername] = useState('');
+    const [duplicateMessage, setDuplicateMessage] = useState('');
+    const [isDuplicate, setIsDuplicate] = useState(false);
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [name, setName] = useState('');
@@ -38,6 +41,8 @@ const Join = () => {
     const [days, setDays] = useState([]);
     const [step, setStep] = useState(1);
     const [finishi, setFinish] = useState(false);
+    const [isPasswordMatched, setIsPasswordMatched] = useState(true);
+    const [passwordType, setPasswordType] = useState('password')
 
     const usernameRef = useRef();
     const passwordRef = useRef();
@@ -72,6 +77,16 @@ const Join = () => {
     const handleSubmit = async () => {
         if (!username || !password || !confirmPassword || !name || !phone || !gender || !selectedYear || !selectedMonth || !selectedDay) {
             alert('모든 항목을 입력해주세요.');
+            return;
+        }
+
+        if(!duplicateMessage){
+            alert('아이디 중복 확인을 해주세요.');
+            return;
+        }
+
+        if(isDuplicate){
+            alert('이미 등록된 아이디입니다. 다른 아이디를 사용해주세요.');
             return;
         }
     
@@ -110,6 +125,42 @@ const Join = () => {
             alert('회원가입 중 오류가 발생했습니다.');
         }
     };
+    const handleConfirmPasswordChange = (e) => {
+        const value = e.target.value;
+        setConfirmPassword(value);
+        setIsPasswordMatched(password === value);
+    }
+
+    const togglePasswordVisibility = () => {
+        setPasswordType((preveType) => (preveType === 'password' ? 'text': 'password'))
+    }
+
+    const checkUsernameDuplicate = async () => {
+        if(!username){
+            alert('아이디를 입력해주세요.');
+            return;
+        }
+        try{
+            const response = await fetch('http://localhost:3001/member');
+            if(!response.ok){
+                throw new Error('HTTP error! status: ${response.status');
+            }
+            const members = await response.json();
+            const isDuplicate = members.some((member) => member.username === username);
+
+            if(isDuplicate){
+                alert('이미 등록된 아이디입니다.다른 아이디를 사용해주세요.')
+                setDuplicateMessage('이미 등록된 아이디입니다.');
+                setIsDuplicate(true);
+            }else{
+                setDuplicateMessage('사용 가능한 아이디입니다.');
+                setIsDuplicate(false);
+            }
+        }catch (error){
+            console.log('Error checking username', error);
+            alert('중복확인 중 문제가 발생했습니다.');
+        }
+    }
     
 
     return (
@@ -138,39 +189,63 @@ const Join = () => {
                     <li>
                         <span>아이디</span>
                         <span>
-                            <input type="text" ref={usernameRef} value={username} onChange={(e)=> setUsername(e.target.value)}/>
-                            @ 
-                            <select name="email" id="">
-                                <option value="naver">naver.com</option>
-                                <option value="nate">nate.com</option>
-                                <option value="daum">daum.net</option>
-                                <option value="">직접 작성하기</option>
-                            </select> 
+                            <input 
+                                type="text" 
+                                ref={usernameRef} 
+                                value={username} 
+                                onChange={(e)=> 
+                                    {setUsername(e.target.value);
+                                    setDuplicateMessage(''); 
+                                    setIsDuplicate(false)
+                                }}
+                            />
                         </span>
-                        <button>중복확인</button>
+                        <button onClick={checkUsernameDuplicate}>중복확인</button>
                         <span>영문소문자,숫자 조합6-40(-_사용가능)</span>
+                    <span style={{ color: isDuplicate ? 'red' : 'green', marginLeft: '10px' }}>
+                        {duplicateMessage}
+                    </span>
                     </li>
                     <li>
                         <span>비밀번호</span>
                         <span>
                             <input
-                                type="password"
+                                type={passwordType}
                                 ref={passwordRef}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
+                            <button
+                                className='passwordbtn' 
+                                type='button'
+                                onClick={togglePasswordVisibility}
+                            >
+                                {passwordType === 'password' ? <FaEye /> : <FaEyeSlash />}
+                            </button>
                         </span>
                     </li>
                     <li>
                         <span>비밀번호 확인</span>
                         <span>
                             <input
-                                type="password"
+                                type={passwordType}
                                 ref={confirmPasswordRef}
                                 value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                onChange={handleConfirmPasswordChange}
                             />
+                             <button
+                                className='passwordbtn'
+                                type='button'
+                                onClick={togglePasswordVisibility}
+                            >
+                                {passwordType === 'password' ? <FaEye /> : <FaEyeSlash />}
+                            </button>
                         </span>
+                        {!isPasswordMatched && (
+                            <span style={{color: 'red', fontSize : '12px', marginLeft : '10px'}}>
+                                비밀번호 일치하지 않음
+                            </span>
+                        )}
                     </li>
                     <li>
                         <span>이름</span>

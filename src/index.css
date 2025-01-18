@@ -81,6 +81,8 @@ code {
 .find .findmain .findmainbtn{margin-top: 46px;}
 
 .join{height: auto; width: 100%;height: 100%;padding:22px 16px;z-index:1;position: relative;}
+.join .passwordbtn{background: none;color: #000;padding-left: .5rem;}
+/* .join:disabled{background: #ccc;cursor: not-allowed;} */
 .joinLogo{display: flex;align-items: center;color: #504e4e; font-weight: 1000; font-size: 18px;letter-spacing: -0.7px;}
 .joinLogo img{width: 32px;}
 .joinLogo a{text-decoration: none; color: #504e4e;}
