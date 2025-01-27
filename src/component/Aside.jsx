@@ -10,6 +10,14 @@ const Aside = ({ showPhotoAlbum }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [showInputFields, setShowInputFields] = useState(false);
     const [editValues, setEditValues] = useState({});
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+      const userData = localStorage.getItem('user');
+      if(userData){
+        setUser(JSON.parse(userData));
+      }
+    }, []);
 
     useEffect(() => {
         setLocalPhotoLists(photolists);
@@ -64,9 +72,9 @@ const Aside = ({ showPhotoAlbum }) => {
                 return Promise.resolve();
             }
     
-            const oldNav = localPhotoLists.find(photo => photo.id === id)?.nav; // Get old nav value
+            const oldNav = localPhotoLists.find(photo => photo.id === id)?.nav; 
     
-            // Update photoList
+            
             const updatePhotoListPromise = fetch(`http://localhost:3001/photoList/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
@@ -75,7 +83,7 @@ const Aside = ({ showPhotoAlbum }) => {
                 if (!res.ok) {
                     throw new Error(`photoList 수정 실패: ${res.status} ${res.statusText}`);
                 }
-                // Update local state for photoList
+                
                 setLocalPhotoLists(prevLists => 
                     prevLists.map(photo => 
                         photo.id === id ? { ...photo, nav: navValue } : photo
@@ -83,11 +91,11 @@ const Aside = ({ showPhotoAlbum }) => {
                 );
             });
     
-            // Update photo with new nav value
+            
             const updatePhotoPromise = fetch(`http://localhost:3001/photo`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ oldNav, newNav: navValue }) // oldNav와 newNav를 포함
+                body: JSON.stringify({ oldNav, newNav: navValue }) 
             }).then(res => {
                 if (!res.ok) {
                     throw new Error(`photo 수정 실패: ${res.status} ${res.statusText}`);
@@ -144,10 +152,14 @@ const Aside = ({ showPhotoAlbum }) => {
                     </div>
 
                     <div className='asideLast'>
-                        <div className='asideLastflex'>
-                            <div>싸이월드</div>
-                            <div>여 1999.07.07</div>
-                        </div>
+                        
+                            {user && (
+                                <div className='asideLastflex'>
+                                    <div>{user.name}</div>
+                                    <div>{user.dob}</div>
+                                </div>
+                            )}
+                        
                         <div>dptjs1106@naver.com</div>
                     </div>
                 </>

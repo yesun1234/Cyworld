@@ -23,31 +23,22 @@
   ],
   "member": [
     {
-      "id": "fdee",
-      "username": "ddppu123",
-      "password": "asdasd123",
-      "name": "dsf",
-      "phone": "01041164661",
-      "gender": "female",
-      "dob": "2000-9-6"
+      "id": "9c25",
+      "username": "dptjs1106",
+      "password": "spahqkwl12@",
+      "name": "안예선",
+      "phone": "234",
+      "gender": "male",
+      "dob": "1931-2-2"
     },
     {
-      "id": "bab6",
-      "username": "sdf",
-      "password": "sdf",
-      "name": "sdf",
-      "phone": "01041164661",
+      "id": "b5a6",
+      "username": "abc",
+      "password": "1234",
+      "name": "회원1",
+      "phone": "01049090909",
       "gender": "female",
-      "dob": "1930-1-1"
-    },
-    {
-      "id": "41ef",
-      "username": "dfg",
-      "password": "sdf",
-      "name": "sdf",
-      "phone": "008",
-      "gender": "female",
-      "dob": "1932-2-5"
+      "dob": "1939-3-4"
     }
   ],
   "profile": [

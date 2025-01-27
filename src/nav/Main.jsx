@@ -13,7 +13,7 @@ const Main = () => {
       return;
     }
     try{
-      const response = await fetch(`http://localhost:3001/member?userid=${userid}&password=${password}`,{
+      const response = await fetch(`http://localhost:3001/member?username=${userid}&password=${password}`,{
         method : 'GET',
         headers : {
           'Content-Type' : 'application/json'
